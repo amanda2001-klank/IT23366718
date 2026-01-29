@@ -61,9 +61,8 @@ async function runTranslationTest(page, tcId, inputText) {
   return actual;
 }
 
-// ========================
-// 24 Positive Functional Tests (Pos_Fun_0001 to Pos_Fun_0024)
-// ========================
+
+// 24 Positive Functional Tests 
 
 test('Pos_Fun_0001 - Convert simple daily sentence', async ({ page }) => {
   await runTranslationTest(page, 'Pos_Fun_0001', 'mama gedhara yanavaa.');
@@ -162,9 +161,9 @@ test('Pos_Fun_0024 - Polite vs informal request variation', async ({ page }) => 
   await runTranslationTest(page, 'Pos_Fun_0024', 'puLuvannam mata eeka evanna. anee eeka dhiyan.');
 });
 
-// ========================
-// 10 Negative Functional Tests (Neg_Fun_0001 to Neg_Fun_0010)
-// ========================
+
+// 10 Negative Functional Tests 
+
 
 test('Neg_Fun_0001 - Joined words without spaces', async ({ page }) => {
   await runTranslationTest(page, 'Neg_Fun_0001', 'mamagedharayanavaa');
@@ -204,4 +203,13 @@ test('Neg_Fun_0009 - Rare abbreviation altered', async ({ page }) => {
 
 test('Neg_Fun_0010 - Informal slang edge with typo', async ({ page }) => {
   await runTranslationTest(page, 'Neg_Fun_0010', 'eka poddak amaaruyi vagee dhaen ithin monavadha karanne?');
+});
+
+
+// 1 UI TEST (Pos_UI_0001)
+
+
+test('Pos_UI_0001 - UI preserves formatting in multi-line input', async ({ page }) => {
+  const multiLineInput = 'mata nidhimathayi.\ndhaen vahinavaa.';
+  await runTranslationTest(page, 'Pos_UI_0001', multiLineInput);
 });
